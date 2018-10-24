@@ -13,6 +13,9 @@ html {
 footer, header, main {
   display: block;
 }
+a:hover{
+    text-decoration: none;
+}
 a {
   background-color: transparent;
   -webkit-text-decoration-skip: objects;

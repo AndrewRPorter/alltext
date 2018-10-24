@@ -1,0 +1,5 @@
+form textarea {
+   width: 100%;
+   height: 600px;
+   resize: none;
+}

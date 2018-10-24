@@ -8,8 +8,10 @@
 
         <link rel="stylesheet" type="text/css" href="/static/css/main.css">
         <link rel="stylesheet" type="text/css" href="/static/css/fonts.css">
+        <link rel="stylesheet" type="text/css" href="/static/css/textarea.css">
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     </head>
     <body>
       <header class="u-clearfix">
@@ -19,24 +21,37 @@
             </a>
           </div>
           <div class="release-notes">
-            <p>View this <a href="https://www.google.com" target="_blank" rel="noopener">project</a> on GitHub</p>
+            <p>View this <a href="https://github.com/AndrewRPorter/alltext" target="_blank" rel="noopener">project</a> on GitHub</p>
           </div>
       </header>
+
       <main>
-
-        <div class="textarea-one">
-          <textarea rows="4" cols="50">
-          At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies.
-          </textarea>
-        </div>
-
-        <div class="textarea-two">
-          <textarea rows="4" cols="50">
-          At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies.
-          </textarea>
-        </div>
-
+        <form method="POST">
+          <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+          <input type="hidden" name="type" value="format">
+          <div class="form-group">
+            <textarea class="form-control" name="text" id="textOne" data-role="none" placeholder="Paste text here..."></textarea>
+          </div>
+          <div class="form-group">
+            <select class="form-control" name="selected">
+              {% for key, value in formats.items() %}
+              <option value="{{key}}">{{value}}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-outline-secondary">Format</button>
+          </div>
+          <div class="form-group">
+            {% if formatted_text %}
+            <textarea class="form-control" id="textTwo" data-role="none">{{formatted_text}}</textarea>
+            {% else %}
+            <textarea class="form-control" id="textTwo" data-role="none"></textarea>
+            {% endif %}
+          </div>
+        </form>
       </main>
+
       <footer class="u-clearfix">
         <a href="https://docs.djangoproject.com/en/2.0/" target="_blank" rel="noopener">
         <div class="option one">
