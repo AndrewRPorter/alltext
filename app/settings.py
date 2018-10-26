@@ -25,7 +25,7 @@ SECRET_KEY = "2wj@yub%h%dh9^n(i5@%g+-#&e80ry3r_^pgk9si42jaxc_26f"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["0.0.0.0"]
 
 
 # Application definition
@@ -54,12 +54,11 @@ ROOT_URLCONF = "app.urls"
 # Using the Jinja2 template engine
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.jinja2.Jinja2',
-        'DIRS': ['./templates'],
-        'APP_DIRS': True,
-        'OPTIONS': {
-        },
-    },
+        "BACKEND": "django.template.backends.jinja2.Jinja2",
+        "DIRS": ["./templates"],
+        "APP_DIRS": True,
+        "OPTIONS": {},
+    }
 ]
 
 WSGI_APPLICATION = "app.wsgi.application"
