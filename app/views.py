@@ -21,6 +21,7 @@ def index(request):
         "formatted_text": "",
         "formats": format.get_formats(),
         "csrf_token": csrf_token,
+        "selected": ""
     }
 
     if request.POST.get("type", "") == "format":
@@ -28,10 +29,21 @@ def index(request):
         text = request.POST["old_text"]
         option = request.POST["selected"]
         template_values["old_text"] = text
+        template_values["selected"] = option
         template_values["formatted_text"] = format.format(text, option=option)
 
         db_interface.commit(db, text)  # add formatted text to database
 
-
-
     return HttpResponse(template.render(template_values))
+
+def about(request):
+    env = Environment(loader=FileSystemLoader("templates"))
+    template = env.get_template("about.html")
+
+    return HttpResponse(template.render())
+
+def api(request):
+    env = Environment(loader=FileSystemLoader("templates"))
+    template = env.get_template("api.html")
+
+    return HttpResponse(template.render())

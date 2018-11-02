@@ -21,7 +21,11 @@ from django.urls import path
 
 from . import settings, views
 
-urlpatterns = [url(r"^$", views.index, name="index")] + static(
+urlpatterns = [
+    url(r"^$", views.index, name="index"),
+    url(r"^about$", views.about, name="about"),
+    url(r"^api$", views.api, name="api"),
+    ] + static(
     settings.STATIC_URL, document_root=settings.STATIC_ROOT
 )
 

@@ -19,7 +19,7 @@ a:hover{
 a {
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
-  color: #19865C;
+  color: black;
   text-decoration: none;
 }
 img {
@@ -33,7 +33,7 @@ svg:not(:root) {
 }
 body {
   max-width: 960px;
-  color: #525252;
+  color: white;
   font-family: Roboto, sans-serif;
 }
 main {
@@ -66,6 +66,7 @@ header {
 .release-notes {
   float: right;
   margin-top: 7px;
+  color: black;
 }
 .release-notes p {
   font-size: 14px;
@@ -248,15 +249,11 @@ footer {
 .option div {
   display: table;
 }
-.option h4 {
-  color: #19865C;
-  font-size: 19px;
-}
 .option p {
   font-weight: 300;
   font-size: 15px;
   padding-top: 3px;
-  color: #757575;
+  color: black;
 }
 @media (max-width: 996px) {
   body, footer {
