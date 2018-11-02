@@ -17,15 +17,16 @@ def index(request):
     csrf_token = get_token(request)
 
     template_values = {
+        "old_text": "",
         "formatted_text": "",
         "formats": format.get_formats(),
         "csrf_token": csrf_token,
     }
 
-    # Grab form values and then apply the appropriate text formatting
     if request.POST.get("type", "") == "format":
-        text = request.POST["text"]
+        text = request.POST["old_text"]
         option = request.POST["selected"]
+        template_values["old_text"] = text
         template_values["formatted_text"] = format.format(text, option=option)
 
     return HttpResponse(template.render(template_values))

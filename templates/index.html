@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html>
     <head>
@@ -30,7 +29,11 @@
           <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
           <input type="hidden" name="type" value="format">
           <div class="form-group">
-            <textarea class="form-control" name="text" id="textOne" data-role="none" placeholder="Paste text here..."></textarea>
+            {% if old_text %}
+            <textarea class="form-control" name="old_text" data-role="none" placeholder="Paste text here...">{{old_text}}</textarea>
+            {% else %}
+            <textarea class="form-control" name="old_text" data-role="none" placeholder="Paste text here..."></textarea>
+            {% endif %}
           </div>
           <div class="form-group">
             <select class="form-control" name="selected">
@@ -44,9 +47,9 @@
           </div>
           <div class="form-group">
             {% if formatted_text %}
-            <textarea class="form-control" id="textTwo" data-role="none">{{formatted_text}}</textarea>
+            <textarea class="form-control" name="new_text" data-role="none">{{formatted_text}}</textarea>
             {% else %}
-            <textarea class="form-control" id="textTwo" data-role="none"></textarea>
+            <textarea class="form-control" name="new_text" data-role="none"></textarea>
             {% endif %}
           </div>
         </form>

@@ -1,8 +1,12 @@
+from tools import strategy
+
+
 def format(text, option=None):
     """Applies the formatting option to the input text"""
     if not option:
         return ""
-    return "test"
+
+    return strategy.format(option, text)
 
 
 def get_formats():

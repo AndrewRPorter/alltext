@@ -1,32 +1,38 @@
-import abc
-
-class Context:
-    def __init__(self, strategy):
-        self.strategy = strategy
-
-    def context_interface(self):
-        self.strategy.algorithm_interface()
+import re
+from functools import partial
 
 
-class Strategy(metaclass=abc.ABCMeta):
-    def __init__(self, text):
-        self.text = text
-
-    @abc.abstractmethod
-    def algorithm_interface(self):
-        return self.text
-
-
-class TabsToSpaces(Strategy):
-    def algorithm_interface(self):
+def format(operation, text):
+    if not operation in operations:
         return ""
 
-
-class RemoveWhitespace(Strategy):
-    def algorithm_interface(self):
-        return ""
+    return execute(partial(operations[operation], text))
 
 
-class Reverse(Strategy):
-    def algorithm_interface(self):
-        return ""
+def execute(operation):
+    return operation()
+
+
+def tabs_to_spaces(data: str):
+    return data.replace("\t", " " * 4)
+
+
+def remove_whitespace(data: str):
+    """
+        Removes all white space characaters in a string according to
+        https://infohost.nmt.edu/tcc/help/pubs/python/web/whitespace.html
+    """
+    for char in [" ", "\n", "\r", "\t", "\f", "\v"]:
+        data = data.replace(char, "")
+    return data
+
+
+def reverse(data: str):
+    return data[::-1]
+
+
+operations = {
+    "tabs_to_spaces": tabs_to_spaces,
+    "remove_whitespace": remove_whitespace,
+    "reverse": reverse,
+}
