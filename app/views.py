@@ -5,7 +5,7 @@ from django.middleware.csrf import get_token
 from django.shortcuts import render
 from jinja2 import Environment, FileSystemLoader
 
-from tools import format
+from tools import format, db_interface
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -24,9 +24,14 @@ def index(request):
     }
 
     if request.POST.get("type", "") == "format":
+        db = os.path.join(BASE_DIR, "db.sqlite3")
         text = request.POST["old_text"]
         option = request.POST["selected"]
         template_values["old_text"] = text
         template_values["formatted_text"] = format.format(text, option=option)
+
+        db_interface.commit(db, text)  # add formatted text to database
+
+
 
     return HttpResponse(template.render(template_values))
