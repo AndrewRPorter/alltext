@@ -15,16 +15,8 @@
         <link rel="stylesheet" type="text/css" href="/static/css/textarea.css">
     </head>
     <body>
-      <header class="u-clearfix">
-          <div class="logo">
-            <a href="/" rel="noopener">
-              <h2>AllText</h2>
-            </a>
-          </div>
-          <div class="release-notes">
-            <p>View this <a href="https://github.com/AndrewRPorter/alltext" target="_blank" rel="noopener" style="color: blue;">project</a> on GitHub</p>
-          </div>
-      </header>
+
+      {% include "nav.html" %}
 
       <main>
         <form method="POST">
@@ -61,31 +53,7 @@
         </form>
       </main>
 
-      <footer class="u-clearfix">
-        <a href="/about">
-        <div class="option one">
-            <i class="fas fa-cog"> About</i>
-            <div>
-                <p>Learn more about this project</p>
-            </div>
-        </div>
-      </a>
-      <a href="https://github.com/AndrewRPorter/alltext" target="_blank" rel="noopener">
-        <div class="option two">
-          <i class="fab fa-github"> <strong>GitHub</strong></i>
-          <div>
-            <p>View AllText on GitHub</p>
-          </div>
-        </div>
-      </a>
-      <a href="/api">
-        <div class="option three">
-          <i class="fas fa-code"> API</i>
-          <div>
-            <p>View the API documentation</p>
-          </div>
-        </div>
-      </a>
-      </footer>
+      {% include "footer.html" %}
+
     </body>
 </html>
