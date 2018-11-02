@@ -3,7 +3,7 @@ from functools import partial
 
 
 def format(operation, text):
-    if not operation in operations:
+    if operation not in operations:
         return ""
 
     return execute(partial(operations[operation], text))

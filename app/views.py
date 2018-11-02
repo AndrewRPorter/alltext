@@ -21,7 +21,7 @@ def index(request):
         "formatted_text": "",
         "formats": format.get_formats(),
         "csrf_token": csrf_token,
-        "selected": ""
+        "selected": "",
     }
 
     if request.POST.get("type", "") == "format":
@@ -36,11 +36,13 @@ def index(request):
 
     return HttpResponse(template.render(template_values))
 
+
 def about(request):
     env = Environment(loader=FileSystemLoader("templates"))
     template = env.get_template("about.html")
 
     return HttpResponse(template.render())
+
 
 def api(request):
     env = Environment(loader=FileSystemLoader("templates"))

@@ -25,9 +25,7 @@ urlpatterns = [
     url(r"^$", views.index, name="index"),
     url(r"^about$", views.about, name="about"),
     url(r"^api$", views.api, name="api"),
-    ] + static(
-    settings.STATIC_URL, document_root=settings.STATIC_ROOT
-)
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 
 if settings.DEBUG:
