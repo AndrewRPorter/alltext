@@ -32,7 +32,8 @@ def index(request):
         template_values["selected"] = option
         template_values["formatted_text"] = format.format(text, option=option)
 
-        db_interface.commit(db, text)  # add formatted text to database
+        if not text == "":
+            db_interface.commit(db, text)  # add formatted text to database
 
     return HttpResponse(template.render(template_values))
 
