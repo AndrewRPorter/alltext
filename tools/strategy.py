@@ -17,6 +17,11 @@ def tabs_to_spaces(data: str):
     return data.replace("\t", " " * 4)
 
 
+def remove_spaces(data: str):
+    print('here')
+    return data.replace(" ", "")
+
+
 def remove_whitespace(data: str):
     """
         Removes all white space characaters in a string according to
@@ -33,6 +38,7 @@ def reverse(data: str):
 
 operations = {
     "tabs_to_spaces": tabs_to_spaces,
+    "remove_spaces": remove_spaces,
     "remove_whitespace": remove_whitespace,
     "reverse": reverse,
 }
