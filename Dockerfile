@@ -1,14 +1,18 @@
 FROM python:3.6-slim
 
-RUN apt-get update && apt-get install -y gcc
+ENV PROJECT=alltext
+ENV CONTAINER_HOME=/opt
+ENV CONTAINER_PROJECT=$CONTAINER_HOME/$PROJECT
 
-COPY ./scripts/start.sh ./scripts/start.sh
+WORKDIR $CONTAINER_PROJECT
 
-ADD requirements.txt requirements.txt
+COPY . $CONTAINER_PROJECT
 
-EXPOSE 5000
+COPY start.sh /start.sh
+COPY requirements.txt /requirements.txt
+
+RUN pip install --no-cache-dir -r /requirements.txt
+
 EXPOSE 8000
-EXPOSE 443
-EXPOSE 80
 
-CMD ["/scripts/start.sh"]
+CMD ["/start.sh"]
