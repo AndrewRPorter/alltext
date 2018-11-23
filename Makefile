@@ -1,7 +1,8 @@
 all: test static run
 
 run:
-	python3 manage.py runserver
+	sudo docker build -t andrew/alltext .
+	sudo docker run -it -p 8000:8000 andrew/alltext
 
 static:
 	python3 manage.py collectstatic
